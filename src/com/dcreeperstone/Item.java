@@ -18,9 +18,9 @@
 package com.dcreeperstone;
 
 /**
- * The {@code Item} class is designed to hold attributes pertaining to a real-world item object.
- * Each {@code Item} is given a description and a quantity count for usage in the
- * {@code Inventory} class.
+ * The {@code Item} class is designed to hold attributes pertaining to a 
+ * real-world item object. Each {@code Item} is given a description and a 
+ * quantity count for usage in the {@code Inventory} class.
  * @author Dr. Hoss
  */
 public class Item {
@@ -28,8 +28,8 @@ public class Item {
     private int quantity;
     
     /**
-     * Constructor that initializes the {@code info} attribute with the specified value and initializes
-     * the {@code quantity} attribute to 0.
+     * Constructor that initializes the {@code info} attribute with the 
+     * specified value and initializes the {@code quantity} attribute to 0.
      * @param inInfo The information describing the {@code Item}.
      */
     public Item(String inInfo) {
@@ -37,7 +37,8 @@ public class Item {
     }
     
     /**
-     * Constructor that initializes a new {@code Item} instance with the specified info and quantity properties.
+     * Constructor that initializes a new {@code Item} instance with the 
+     * specified info and quantity properties.
      * @param inInfo The information describing the {@code Item}.
      * @param inQuantity The initial quantity of the {@code Item}.
      */
@@ -77,7 +78,8 @@ public class Item {
     }
     
     /**
-     * Removes the specified amount from the {@code quantity} attribute if possible.
+     * Removes the specified amount from the {@code quantity} attribute 
+     * if possible.
      * @param amount The amount to remove from the {@code quantity} attribute.
      */
     public void removeFromQuantity(int amount) {
