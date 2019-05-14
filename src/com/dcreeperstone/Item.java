@@ -19,16 +19,25 @@ package com.dcreeperstone;
 
 /**
  *
- * @author video
+ * @author Dr. Hoss
  */
 public class Item {
     private final String info;
     private int quantity;
     
+    /**
+     * 
+     * @param inInfo 
+     */
     public Item(String inInfo) {
         this(inInfo, 0);
     }
     
+    /**
+     * 
+     * @param inInfo
+     * @param inQuantity 
+     */
     public Item(String inInfo, int inQuantity) {
         if (quantity < 0)
             throw new IllegalArgumentException("Cannot have a negative number "
@@ -37,14 +46,26 @@ public class Item {
         quantity = inQuantity;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public String getInfo() {
         return info;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public int getQuantity() {
         return quantity;
     }
     
+    /**
+     * 
+     * @param amount 
+     */
     public void addToQuantity(int amount) {
         if (amount < 0)
             throw new IllegalArgumentException("Cannot add negative number of "
@@ -52,6 +73,10 @@ public class Item {
         quantity += amount;
     }
     
+    /**
+     * 
+     * @param amount 
+     */
     public void removeFromQuantity(int amount) {
         if (amount < 0)
             throw new IllegalArgumentException("Cannot remove negative number "
@@ -62,6 +87,9 @@ public class Item {
         quantity -= amount;
     }
     
+    /**
+     * 
+     */
     public void resetQuantity() {
         quantity = 0;
     }

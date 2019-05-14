@@ -17,8 +17,12 @@
  */
 package com.dcreeperstone;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Scanner;
 
 /**
  *
@@ -30,15 +34,48 @@ public class Inventory {
     
     private static final int MAX_LINE_LENGTH = 80;
     
+    /**
+     * 
+     * @param inName 
+     */
     public Inventory(String inName) {
         inventory = new HashSet<>();
         name = inName;
+        logChanges("'" + inName + "' inventory created.");
     }
     
+    public Inventory(String inName, Scanner invSC) {
+        inventory = new HashSet<>();
+        name = inName;
+        logChanges("'" + inName + "' inventory created.");
+        loadInventory(invSC);
+    }
+    
+    private void loadInventory(Scanner invSC) {
+        Item tempItem;
+        String tempInfo;
+        int tempQty;
+        
+        while (invSC.hasNext()) {
+            tempInfo = invSC.nextLine();
+            tempQty = Integer.parseInt(invSC.nextLine());
+            tempItem = new Item(tempInfo, tempQty);
+            addNewItem(tempItem);
+        }
+    }
+    
+    /**
+     * 
+     * @return 
+     */
     public String getName() {
         return name;
     }
     
+    /**
+     * 
+     * @param inItem 
+     */
     public void addNewItem(Item inItem) {
         Item searchItem;
         Iterator<Item> it = inventory.iterator();
@@ -51,12 +88,22 @@ public class Inventory {
                         item.addToQuantity(1);
                 });
                 itemFound = true;
+                logChanges("Added 1 to item '" + inItem.getInfo() 
+                        + "' to inventory due to prior existance.");
             }
         }
-        if (!itemFound)
+        if (!itemFound) {
             inventory.add(inItem);
+            logChanges("Add item '" + inItem.getInfo() + "' with quantity " 
+                    + inItem.getQuantity() + " to inventory.");
+        }
     }
     
+    /**
+     * 
+     * @param key
+     * @param amount 
+     */
     public void addToItem(String key, int amount) {
         Item searchItem;
         boolean itemFound;
@@ -71,12 +118,19 @@ public class Inventory {
                         item.addToQuantity(amount);
                 });
                 itemFound = true;
+                logChanges("Attempted to add " + amount 
+                        + " to quantity of item '" + searchItem.getInfo() 
+                        + "'.");
             }
         }
         if (!itemFound)
             System.out.println("Item could not be found in the inventory.");
     }
     
+    /**
+     * 
+     * @param key 
+     */
     public void removeItem(String key) {
         Item searchItem;
         boolean itemFound;
@@ -88,12 +142,19 @@ public class Inventory {
             if (searchItem.getInfo().equalsIgnoreCase(key)) {
                 inventory.remove(searchItem);
                 itemFound = true;
+                logChanges("Removed item '" + searchItem.getInfo() 
+                        + "' from inventory.");
             }
         }
         if (!itemFound)
             System.out.println("Item could not be found in the inventory.");
     }
     
+    /**
+     * 
+     * @param key
+     * @param amount 
+     */
     public void removeFromItem(String key, int amount) {
         Item searchItem;
         boolean itemFound;
@@ -108,12 +169,60 @@ public class Inventory {
                         item.removeFromQuantity(amount);
                 });
                 itemFound = true;
+                logChanges("Attempted to remove " + amount 
+                        + " from quantity of item '" + searchItem.getInfo() 
+                        + "'.");
             }
         }
         if (!itemFound)
             System.out.println("Item could not be found in the inventory.");
     }
     
+    /**
+     * 
+     * @param key 
+     */
+    public void resetItem(String key) {
+        Item searchItem;
+        boolean itemFound;
+        
+        itemFound = false;
+        Iterator<Item> it = inventory.iterator();
+        while (it.hasNext() && !itemFound) {
+            searchItem = it.next();
+            if (searchItem.getInfo().equalsIgnoreCase(key)) {
+                inventory.forEach(item -> {
+                    if (item.getInfo().equalsIgnoreCase(key))
+                        item.resetQuantity();
+                });
+                logChanges("Reset item '" + searchItem.getInfo() 
+                        + "' quantity to 0.");
+                itemFound = true;
+            }
+        }
+        if (!itemFound)
+            System.out.println("Item could not be found in the inventory.");
+    }
+    
+    /**
+     * 
+     */
+    public void resetAllItems() {
+        inventory.forEach(Item::resetQuantity);
+        logChanges("Reset all item quantites to 0.");
+    }
+    
+    /**
+     * 
+     */
+    public void clearInventory() {
+        inventory.clear();
+        logChanges("Removed all items from '" + name + "' inventory.");
+    }
+    
+    /**
+     * 
+     */
     public void displayAllItems() {
         Iterator<Item> it = inventory.iterator();
         Item currItem;
@@ -144,5 +253,18 @@ public class Inventory {
             System.out.println("There are currently no items in the "
                     + "inventory.");
         System.out.println();
+    }
+    
+    private void logChanges(String message) {
+        FileWriter logFile;
+        PrintWriter logPW;
+        try {
+            logFile = new FileWriter("log.txt", true);
+            logPW = new PrintWriter(logFile);
+            logPW.println(message);
+            logPW.close();
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
     }
 }

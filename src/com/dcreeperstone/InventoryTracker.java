@@ -21,7 +21,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author video
+ * @author Dr. Hoss
  */
 public class InventoryTracker {
 
@@ -36,6 +36,14 @@ public class InventoryTracker {
         saveInventory(inv);
     }
     
+    public static void showStartMenu() {
+        
+    }
+    
+    /**
+     * 
+     * @return 
+     */
     public static Inventory getNewInventory() {
         Scanner kbd = new Scanner(System.in);
         Inventory inv;
@@ -48,18 +56,34 @@ public class InventoryTracker {
         return inv;
     }
     
+    /**
+     * 
+     * @param inv 
+     */
     public static void processInventory(Inventory inv) {
         
     }
     
-    public static void showMenu() {
+    /**
+     * 
+     */
+    public static void showOperationMenu() {
         
     }
     
+    /**
+     * 
+     * @param inv
+     * @param userChoice 
+     */
     public static void performChoice(Inventory inv, int userChoice) {
         
     }
     
+    /**
+     * 
+     * @param inv 
+     */
     public static void saveInventory(Inventory inv) {
         
     }
