@@ -18,7 +18,9 @@
 package com.dcreeperstone;
 
 /**
- *
+ * The {@code Item} class is designed to hold attributes pertaining to a real-world item object.
+ * Each {@code Item} is given a description and a quantity count for usage in the
+ * {@code Inventory} class.
  * @author Dr. Hoss
  */
 public class Item {
@@ -26,17 +28,18 @@ public class Item {
     private int quantity;
     
     /**
-     * 
-     * @param inInfo 
+     * Constructor that initializes the {@code info} attribute with the specified value and initializes
+     * the {@code quantity} attribute to 0.
+     * @param inInfo The information describing the {@code Item}.
      */
     public Item(String inInfo) {
         this(inInfo, 0);
     }
     
     /**
-     * 
-     * @param inInfo
-     * @param inQuantity 
+     * Constructor that initializes a new {@code Item} instance with the specified info and quantity properties.
+     * @param inInfo The information describing the {@code Item}.
+     * @param inQuantity The initial quantity of the {@code Item}.
      */
     public Item(String inInfo, int inQuantity) {
         if (quantity < 0)
@@ -47,24 +50,24 @@ public class Item {
     }
     
     /**
-     * 
-     * @return 
+     * Gets the value of the {@code info} attribute.
+     * @return The {@code info} attribute.
      */
     public String getInfo() {
         return info;
     }
     
     /**
-     * 
-     * @return 
+     * Gets the value of the {@code quantity} attribute.
+     * @return The {@code quantity} attribute.
      */
     public int getQuantity() {
         return quantity;
     }
     
     /**
-     * 
-     * @param amount 
+     * Adds the specified amount to the {@code quantity} attribute.
+     * @param amount The amount to add to the {@code quantity} attribute.
      */
     public void addToQuantity(int amount) {
         if (amount < 0)
@@ -74,8 +77,8 @@ public class Item {
     }
     
     /**
-     * 
-     * @param amount 
+     * Removes the specified amount from the {@code quantity} attribute if possible.
+     * @param amount The amount to remove from the {@code quantity} attribute.
      */
     public void removeFromQuantity(int amount) {
         if (amount < 0)
@@ -88,7 +91,7 @@ public class Item {
     }
     
     /**
-     * 
+     * Resets the {@code quantity} attribute to 0.
      */
     public void resetQuantity() {
         quantity = 0;
