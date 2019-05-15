@@ -51,24 +51,24 @@ public class Item {
     }
     
     /**
-     * Gets the value of the {@code info} attribute.
-     * @return The {@code info} attribute.
+     * Gets the value of the info attribute.
+     * @return The info attribute.
      */
     public String getInfo() {
         return info;
     }
     
     /**
-     * Gets the value of the {@code quantity} attribute.
-     * @return The {@code quantity} attribute.
+     * Gets the value of the quantity attribute.
+     * @return The quantity attribute.
      */
     public int getQuantity() {
         return quantity;
     }
     
     /**
-     * Adds the specified amount to the {@code quantity} attribute.
-     * @param amount The amount to add to the {@code quantity} attribute.
+     * Adds the specified amount to the quantity attribute.
+     * @param amount The amount to add to the quantity attribute.
      */
     public void addToQuantity(int amount) {
         if (amount < 0)
@@ -78,9 +78,9 @@ public class Item {
     }
     
     /**
-     * Removes the specified amount from the {@code quantity} attribute 
+     * Removes the specified amount from the quantity attribute 
      * if possible.
-     * @param amount The amount to remove from the {@code quantity} attribute.
+     * @param amount The amount to remove from the quantity attribute.
      */
     public void removeFromQuantity(int amount) {
         if (amount < 0)
@@ -93,7 +93,7 @@ public class Item {
     }
     
     /**
-     * Resets the {@code quantity} attribute to 0.
+     * Resets the quantity attribute to 0.
      */
     public void resetQuantity() {
         quantity = 0;

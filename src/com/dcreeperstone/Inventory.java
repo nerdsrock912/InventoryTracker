@@ -26,7 +26,10 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 /**
- *
+ * The {@code Inventory} class is designed to hold a mutable list of many
+ * {@code Item} instances. Each {@code Inventory} instance is given its own
+ * name attribute and a {@code HashSet<Item>} attribute that ensures no 
+ * {@code Item} instances are repeated in the {@code Set}.
  * @author Dr. Hoss
  */
 public class Inventory {
@@ -37,8 +40,10 @@ public class Inventory {
     private static final int MAX_LINE_LENGTH = 80;
 
     /**
-     *
-     * @param inName
+     * Constructor that initializes a new {@code Inventory} instance with only
+     * the name attribute and creates a new list to hold {@code Item}
+     * instances.
+     * @param inName The name to use for the {@code Inventory}.
      */
     public Inventory(String inName) {
         inventory = new HashSet<>();
@@ -47,8 +52,9 @@ public class Inventory {
     }
 
     /**
-     * 
-     * @param invFile
+     * Constructor that initializes an {@code Inventory} instance with the
+     * specified file and loads the file's contents into the list.
+     * @param invFile The file containing data for the {@code Inventory}.
      */
     public Inventory(File invFile) {
         try {
@@ -80,16 +86,17 @@ public class Inventory {
     }
 
     /**
-     *
-     * @return
+     * Gets the value of the name attribute.
+     * @return The name attribute.
      */
     public String getName() {
         return name;
     }
 
     /**
-     *
-     * @param inItem
+     * Adds a new {@code Item} instance to the list. If it already exists, adds
+     * the {@code Item} quantity to the present one.
+     * @param inItem The {@code Item} instance to add to the list.
      */
     public void addNewItem(Item inItem) {
         Item searchItem;
@@ -112,9 +119,11 @@ public class Inventory {
     }
 
     /**
-     *
-     * @param key
-     * @param amount
+     * Adds the specified amount to the quantity of the desired {@code Item} if 
+     * it exists in the list.
+     * @param key The search key for the desired {@code Item}.
+     * @param amount The amount to add to the quantity of the specified 
+     * {@code Item}.
      */
     public void addToItem(String key, int amount) {
         Item searchItem;
@@ -133,8 +142,8 @@ public class Inventory {
     }
 
     /**
-     *
-     * @param key
+     * Removes the specified {@code Item} from the list if it exists.
+     * @param key The search key for the desired {@code Item}.
      */
     public void removeItem(String key) {
         Item searchItem;
@@ -150,9 +159,10 @@ public class Inventory {
     }
 
     /**
-     *
-     * @param key
-     * @param amount
+     * Removes the specified amount from the quantity of the specified 
+     * {@code Item} if it exists in the list.
+     * @param key The search key for the desired {@code Item}.
+     * @param amount The quantity to remove.
      */
     public void removeFromItem(String key, int amount) {
         Item searchItem;
@@ -172,9 +182,9 @@ public class Inventory {
     }
 
     /**
-     * 
-     * @param key
-     * @return 
+     * Searches the list for the specified {@code Item} instance.
+     * @param key The search key for the desired {@code Item}.
+     * @return The {@code Item} in the list pertaining to the search key.
      */
     public Item search(String key) {
         Item searchItem = null;
@@ -193,8 +203,9 @@ public class Inventory {
     }
 
     /**
-     *
-     * @param key
+     * Resets the quantity of the {@code Item} instance of the search key,
+     * if it exists in the list.
+     * @param key The search key for the desired {@code Item}.
      */
     public void resetItem(String key) {
         Item searchItem;
@@ -213,7 +224,7 @@ public class Inventory {
     }
 
     /**
-     *
+     * Resets the quantities of all {@code Item} instances to 0.
      */
     public void resetAllItems() {
         inventory.forEach(Item::resetQuantity);
@@ -221,7 +232,7 @@ public class Inventory {
     }
 
     /**
-     *
+     * Removes all {@code Item} instances from the list.
      */
     public void clearInventory() {
         inventory.clear();
@@ -229,7 +240,7 @@ public class Inventory {
     }
 
     /**
-     *
+     * Displays all available {@code Item} instances in the list.
      */
     public void displayAllItems() {
         Iterator<Item> it = inventory.iterator();
@@ -266,10 +277,11 @@ public class Inventory {
                     + "inventory.");
         System.out.println();
     }
-
+    
     /**
-     * 
-     * @param path 
+     * Saves all {@code Item} instances from the list to the specified path.
+     * @param directory The directory for the save path.
+     * @param fileName The name of the file to save the data to.
      */
     public void saveDataTo(String directory, String fileName) {
         PrintWriter invPW;
