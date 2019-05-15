@@ -1,0 +1,15 @@
+'Office Supplies' inventory created.
+Added item 'Laptop' with quantity 2 to inventory.
+Added item 'Mouse' with quantity 1 to inventory.
+Added item 'AAA Battery' with quantity 5 to inventory.
+Added item 'Notebook' with quantity 14 to inventory.
+Inventory saved to 'G:/Code/Inventory Program/Office Supplies.txt'.
+'Office Supplies' inventory loaded from 'G:\Code\Inventory Program\Office Supplies.txt'.
+Added item 'AAA Battery' with quantity 5 to inventory.
+Added item 'Mouse' with quantity 1 to inventory.
+Added item 'Notebook' with quantity 14 to inventory.
+Added item 'Laptop' with quantity 2 to inventory.
+Added item 'Staple' with quantity 5000 to inventory.
+Added item 'Stapler' with quantity 2 to inventory.
+Added item 'Hole Puncher' with quantity 1 to inventory.
+Inventory saved to 'G:/Code/Inventory Program/Office Supplies.txt'.
