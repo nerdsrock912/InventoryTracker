@@ -98,4 +98,13 @@ public class Item {
     public void resetQuantity() {
         quantity = 0;
     }
+    
+    @Override
+    public String toString() {
+        String res;
+        
+        res = String.format("Item info:  %s\nQuantity:  %d\n", info, quantity);
+        
+        return res;
+    }
 }
